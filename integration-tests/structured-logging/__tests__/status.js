@@ -13,8 +13,8 @@ describe(`Successful Build`, () => {
   beforeAll(async done => {
     gatsbyProcess = spawn(process.execPath, [gatsbyBin, `build`], {
       // inherit lets us see logs in console
-      // stdio: [`ignore`, `ignore`, `ignore`, `ipc`],
-      stdio: [`inherit`, `inherit`, `inherit`, `ipc`],
+      stdio: [`ignore`, `ignore`, `ignore`, `ipc`],
+      // stdio: [`inherit`, `inherit`, `inherit`, `ipc`],
       env: {
         ...process.env,
         NODE_ENV: `production`,

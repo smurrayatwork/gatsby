@@ -366,13 +366,11 @@ describe(`develop`, () => {
       beforeAll(() => {
         return cpy(
           path.join(__dirname, "../src/pages/index.js"),
-          path.join(__dirname, "../original-index.js"),
+          path.join(__dirname, "../original/"),
           {
             overwrite: true,
           }
-        ).catch(err => {
-          // ignore
-        })
+        )
       })
 
       describe(`invalid`, () => {
@@ -420,17 +418,13 @@ describe(`develop`, () => {
         beforeAll(async done => {
           clearEvents()
 
-          try {
-            await cpy(
-              path.join(__dirname, "../original-index.js"),
-              path.join(__dirname, "../src/pages/index.js"),
-              {
-                overwrite: true,
-              }
-            )
-          } catch (err) {
-            // ignore
-          }
+          await cpy(
+            path.join(__dirname, "../original/index.js"),
+            path.join(__dirname, "../src/pages/"),
+            {
+              overwrite: true,
+            }
+          )
 
           eventEmitter.once(`done`, () => {
             done()
